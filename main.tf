@@ -1,4 +1,9 @@
 resource "aws_s3_bucket" "project_bucket" {
+
+  #checkov:skip=CKV_AWS_144:Cross-region replication is deferred for this learning bucket
+  #checkov:skip=CKV_AWS_18:Access logging will be added with a dedicated logging bucket
+  #checkov:skip=CKV2_AWS_62:Event notifications are deferred until an event-driven use case is implemented
+
   bucket_prefix = "terraform-cicd-"
 
   tags = {
