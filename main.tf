@@ -7,3 +7,19 @@ resource "aws_s3_bucket" "project_bucket" {
     Managedby  = "terraform"
   }
 }
+
+resource "aws_s3_account_public_access_block" "project_bucket" {
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+
+}
+
+resource "aws_s3_bucket_versioning" "project_bucket" {
+  bucket = aws_s3_bucket.project_bucket.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
