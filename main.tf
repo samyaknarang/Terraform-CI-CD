@@ -8,7 +8,8 @@ resource "aws_s3_bucket" "project_bucket" {
   }
 }
 
-resource "aws_s3_account_public_access_block" "project_bucket" {
+resource "aws_s3_bucket_public_access_block" "project_bucket" {
+  bucket                  = aws_s3_bucket.project_bucket.id
   block_public_acls       = true
   block_public_policy     = true
   ignore_public_acls      = true
