@@ -59,4 +59,11 @@ jobs:
         run: terraform init -backend=false
 
       - name: Generate configuration-only plan
-        run: terraform plan -refresh=false -lock=false
+        env:
+          AWS_EC2_METADATA_DISABLED: "true"
+        run: |
+          terraform plan \
+            -refresh=false \
+            -lock=false \
+            -input=false \
+            -var-file=/dev/null
