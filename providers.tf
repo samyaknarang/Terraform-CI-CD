@@ -10,6 +10,5 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.aws_region
-  profile = "CI-CD-USER"
+  region = var.aws_region
 }
